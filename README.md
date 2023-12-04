@@ -1,3 +1,8 @@
+Tran Quang Dong - 20204528
+- làm phần BaseController, HomeController, PaymentController.
+
+
+
 # An Internet Media Store
 
 <p align="center">
