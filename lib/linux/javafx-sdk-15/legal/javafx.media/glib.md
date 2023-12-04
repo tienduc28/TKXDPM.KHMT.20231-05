@@ -1,6 +1,7 @@
 ## GNU Glib v2.62.2
 
 ### Glib Notice
+
 ```
 
 You are receiving a copy of GNU Glib, Version: 2.62.2 in either source or
@@ -29,6 +30,7 @@ code is here:
 ```
 
 ### LGPL 2.1
+
 ```
 
                   GNU LESSER GENERAL PUBLIC LICENSE

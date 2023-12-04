@@ -1,6 +1,7 @@
 ## GStreamer v1.16.1
 
 ### GStreamer Notice
+
 ```
 
 You are receiving a copy of GStreamer, Version: 1.16.1 in either source or
@@ -27,6 +28,7 @@ code is here:
 ```
 
 ### LGPL 2.1
+
 ```
 
                   GNU LESSER GENERAL PUBLIC LICENSE

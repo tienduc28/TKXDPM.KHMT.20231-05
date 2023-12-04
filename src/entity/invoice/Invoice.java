@@ -6,28 +6,38 @@ public class Invoice {
 
     private Order order;
     private int amount;
-    
-    public Invoice(){
+
+    public Invoice() {
 
     }
 
-    public Invoice(Order order){
+    public Invoice(Order order) {
         this.order = order;
     }
 
+
+    /**
+     * @return Order
+     */
     public Order getOrder() {
         return order;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
+    /**
+     * @return int
+     */
     public int getAmount() {
         return amount;
     }
 
-    public void saveInvoice(){
-        
+    /**
+     * @param amount
+     */
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public void saveInvoice() {
+
     }
 }
