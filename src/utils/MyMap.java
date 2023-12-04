@@ -64,6 +64,8 @@ public class MyMap extends LinkedHashMap<String, Object> {
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 */
+
+	// Logical Cohesion
 	public static Map<String, Object> toMyMap(Object obj) throws IllegalArgumentException, IllegalAccessException {
 		Map<String, Object> map = new MyMap();
 		for (Field field : obj.getClass().getDeclaredFields()) {
@@ -95,6 +97,8 @@ public class MyMap extends LinkedHashMap<String, Object> {
 	 * @return the term as {@link java.lang.String String} 
 	 * @throws IllegalArgumentException
 	 */
+
+	// Functional Cohesion
 	private static String getNextTerm(String str, int idx) {
 		if (str == null || idx >= str.length() || str.charAt(idx) != '"') {
 			throw new IllegalArgumentException("Cannot resolve the input.");
@@ -128,6 +132,8 @@ public class MyMap extends LinkedHashMap<String, Object> {
 	 * @return the term as {@link utils.MyMap MyMap} 
 	 * @throws IllegalArgumentException
 	 */
+
+	// Logical Cohesion
 	public static MyMap toMyMap(String str, int idx) throws IllegalArgumentException {
 		if (str == null || str.length() < 2 || str.charAt(idx) != '{') {
 			throw new IllegalArgumentException("Cannot resolve the input.");
