@@ -24,6 +24,8 @@ public class MyMap extends LinkedHashMap<String, Object> {
 	 *         https://hg.openjdk.java.net/jdk8/jdk8/jdk/file/tip/src/share/classes/java/util/Hashtable.java
 	 * @return a {@link java.lang.String String}.
 	 */
+
+	// Function Cohesion
 	public String toJSON() {
 		int max = size() - 1;
 		if (max == -1)
@@ -133,7 +135,7 @@ public class MyMap extends LinkedHashMap<String, Object> {
 	 * @throws IllegalArgumentException
 	 */
 
-	// Logical Cohesion
+	// Function Cohesion
 	public static MyMap toMyMap(String str, int idx) throws IllegalArgumentException {
 		if (str == null || str.length() < 2 || str.charAt(idx) != '{') {
 			throw new IllegalArgumentException("Cannot resolve the input.");
