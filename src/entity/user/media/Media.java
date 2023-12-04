@@ -1,4 +1,4 @@
-package entity.media;
+package entity.user.media;
 
 import entity.db.AIMSDB;
 import utils.Utils;

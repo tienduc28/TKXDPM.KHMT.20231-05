@@ -3,7 +3,7 @@ package views.screen.home;
 import common.exception.MediaNotAvailableException;
 import entity.cart.Cart;
 import entity.cart.CartMedia;
-import entity.media.Media;
+import entity.user.media.Media;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

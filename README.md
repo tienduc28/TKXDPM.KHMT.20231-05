@@ -1,5 +1,5 @@
 Tran Quang Dong - 20204528
-- làm phần BaseController, HomeController, PaymentController.
+- làm phần Controller, commonException.
 
 
 

@@ -4,7 +4,7 @@ import common.exception.ViewCartException;
 import controller.HomeController;
 import controller.ViewCartController;
 import entity.cart.Cart;
-import entity.media.Media;
+import entity.user.media.Media;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
