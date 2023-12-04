@@ -19,6 +19,7 @@ public class BaseController {
      * @param media media object
      * @return CartMedia or null
      */
+    //data coupling
     public CartMedia checkMediaInCart(Media media) {
         return Cart.getCart().checkMediaInCart(media);
     }
@@ -28,6 +29,7 @@ public class BaseController {
      *
      * @return List[CartMedia]
      */
+    //data coupling
     public List getListCartMedia() {
         return Cart.getCart().getListMedia();
     }
