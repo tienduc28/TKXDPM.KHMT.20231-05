@@ -179,7 +179,6 @@ public class PlaceOrderController extends BaseController {
      * @param address
      * @return boolean
      */
-    // control coupling
     public boolean validateAddressPlaceRushOrder(String province, String address) {
         if (!validateAddress(address))
             return false;
@@ -192,7 +191,6 @@ public class PlaceOrderController extends BaseController {
     /**
      * @return boolean
      */
-    // control Coupling
     public boolean validateMediaPlaceRushorder() {
         if (Media.getIsSupportedPlaceRushOrder())
             return true;
