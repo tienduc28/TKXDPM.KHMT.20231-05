@@ -47,6 +47,7 @@ public class API {
 
 	int var;
 
+	// Data Coupling
 	public static String post(String url, String data
 //			, String token
 	) throws IOException {
@@ -78,6 +79,7 @@ public class API {
 		return response.toString();
 	}
 
+	// Control Coupling
 	private static void allowMethods(String... methods) {
 		try {
 			Field methodsField = HttpURLConnection.class.getDeclaredField("methods");
