@@ -18,6 +18,7 @@ public class PlaceRushOrderController extends BaseController {
      * @param deliveryData
      * @param typeDelivery
      */
+    // control coupling
     public static void validatePlaceRushOrderData(HashMap<String, String> deliveryData, int typeDelivery) {
         if (typeDelivery == utils.Configs.PLACE_RUSH_ORDER) {
             Shipment shipment = new Shipment(typeDelivery, deliveryData.get("deliveryInstruction"), deliveryData.get("shipmentDetail"), deliveryData.get("deliveryTime"));

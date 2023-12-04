@@ -1,6 +1,6 @@
 package controller;
 
-import entity.media.Media;
+import entity.user.media.Media;
 
 import java.sql.SQLException;
 import java.util.List;

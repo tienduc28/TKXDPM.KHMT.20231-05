@@ -59,7 +59,7 @@ public class PaymentController extends BaseController {
    * @return {@link java.util.Map Map} represent the payment result with a
    *         message.
    */
-  // data coupling
+  // control coupling
     public Map<String, String> makePayment(Map<String, String> res) {
         Map<String, String> result = new Hashtable<String, String>();
 

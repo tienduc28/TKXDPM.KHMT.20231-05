@@ -2,7 +2,7 @@ package controller;
 
 import entity.cart.Cart;
 import entity.cart.CartMedia;
-import entity.media.Media;
+import entity.user.media.Media;
 
 import java.util.List;
 

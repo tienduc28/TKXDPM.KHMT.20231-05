@@ -1,7 +1,7 @@
 package entity.cart;
 
 import common.exception.MediaNotAvailableException;
-import entity.media.Media;
+import entity.user.media.Media;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
