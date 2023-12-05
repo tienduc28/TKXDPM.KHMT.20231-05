@@ -3,6 +3,8 @@ package subsystem.interbank;
 import common.exception.UnrecognizedException;
 import utils.API;
 
+// Stamp Coupling
+// Function Cohesion
 public class InterbankBoundary {
 
 	String query(String url, String data) {

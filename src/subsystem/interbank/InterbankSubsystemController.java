@@ -16,6 +16,8 @@ import utils.Configs;
 import utils.MyMap;
 import utils.Utils;
 
+// Stamp Coupling: Lớp này truyền các đối tượng phức tạp (như CreditCard, Map<String, Object>) giữa các phương thức.
+// Function Cohesion: Tất cả các chức năng trong lớp đều hướng đến mục tiêu chung là quản lý giao dịch thanh toán.
 public class InterbankSubsystemController {
 
 	private static final String PUBLIC_KEY = "AQzdE8O/fR8=";
