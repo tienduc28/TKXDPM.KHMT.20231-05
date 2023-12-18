@@ -1,6 +1,6 @@
 package controller;
 
-import entity.media.Media;
+import entity.user.media.Media;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -8,7 +8,6 @@ import java.util.List;
 /**
  * This class controls the flow of events in homescreen
  *
- * @author nguyenlm
  */
 public class HomeController extends BaseController {
 
@@ -18,6 +17,7 @@ public class HomeController extends BaseController {
      * @return List[Media]
      * @throws SQLException
      */
+    // data coupling
     public List getAllMedia() throws SQLException {
         return new Media().getAllMedia();
     }

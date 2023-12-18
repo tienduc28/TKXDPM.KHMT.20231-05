@@ -1,4 +1,4 @@
-package entity.media;
+package entity.user.media;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

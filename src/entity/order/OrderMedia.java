@@ -1,6 +1,6 @@
 package entity.order;
 
-import entity.media.Media;
+import entity.user.media.Media;
 
 public class OrderMedia {
 

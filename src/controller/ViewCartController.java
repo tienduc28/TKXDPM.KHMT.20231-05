@@ -7,7 +7,6 @@ import java.sql.SQLException;
  * This class controls the flow of events when users view the Cart
  */
 public class ViewCartController extends BaseController {
-
     /**
      * This method checks the available products in Cart
      *
@@ -22,6 +21,7 @@ public class ViewCartController extends BaseController {
      *
      * @return subtotal
      */
+    // data coupling
     public int getCartSubtotal() {
         int subtotal = Cart.getCart().calSubtotal();
         return subtotal;
