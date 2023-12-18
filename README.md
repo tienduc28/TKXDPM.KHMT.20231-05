@@ -16,12 +16,12 @@ Template for managing Capstone's project in the Software Design and Construction
 
 Before using this Github repository, everyone needs to register their group information using the table below:
 
-| Name           | Role        |
-| :------------- | :---------- |
-| Lê Thanh Giang | Team Leader |
-| Nguyễn Văn A   | Member      |
-| Nguyễn Văn B   | Member      |
-
+| Name                 | Role        |
+| :-------------       | :---------- |
+| Trần Quang Đông      | Team Leader |
+| Nguyễn Thị Bích Diệp | Member      |
+| Trần Tiến Đức        | Member      |
+| Lê Huy Dũng          | Member      |
 ## What's included
 
 The recommended structure is as follows:
@@ -37,22 +37,24 @@ The recommended structure is as follows:
 The recommended report structure will have a format as follows:
 
 <details>
-  <summary>Week xx Report, where you record the week as Wxx: from date ~ to date. Example: W1: 01/10/2023~08/10/2023 </summary>
+  <summary>Week 15: 10/12/2023~17/12/2023 </summary>
 <br>
 <details>
-<summary>Team Member 1</summary>
+<summary>Trần Quang Đông</summary>
 <br>
 
 - Assigned tasks:
-  - Task 1
+  - Task: Đánh giá SOLID cho package controller
   - Task 2
   - ...
 
 - Implementation details:
-  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+  - Pull Request(s):
   - Specific implementation details:
-    - Describe specific in detail what you did last week
-    - You can attach images if you want
+    - Đánh giá package controller:
+    - Tuân thủ một số nguyên tắc trong SOLID, (chủ yếu là SRP)
+    - Có thể cải thiện bằng cách tách nhỏ một số function, do có một số function đang hoạt động quá nhiều chức năng
+    - Một số lớp phụ thuộc quá nhiều vào lớp bên ngoài, cần giảm bớt sự phụ thuộc
 
 </details>
 
