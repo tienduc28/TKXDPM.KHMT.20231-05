@@ -1,65 +1,142 @@
-Tran Quang Dong - 20204528
-- làm phần Controller, commonException.
+# TKXDPM.VN.20231-01
+Template for managing Capstone's project in the Software Design and Construction course in the 2023.1 semester.
+
+## Table of contents
+
+- [TKXDPM.VN.20231-01](#tkxdpmvn20231-01)
+  - [Table of contents](#table-of-contents)
+  - [Quick start](#quick-start)
+  - [What's included](#whats-included)
+  - [Report Content](#report-content)
+  - [Pull request template](#pull-request-template)
+  - [QA](#qa)
+  - [Creators](#creators)
+
+## Quick start
+
+Before using this Github repository, everyone needs to register their group information using the table below:
+
+| Name           | Role        |
+| :------------- | :---------- |
+| Lê Thanh Giang | Team Leader |
+| Nguyễn Văn A   | Member      |
+| Nguyễn Văn B   | Member      |
+
+## What's included
+
+The recommended structure is as follows:
+
+- `AIMS`: folder containing the team's AIMS base code
+- `assets`: folder containing images that you want to include in the report file
+- `README.md`: weekly report file, individuals are required to update their tasks and how their do it into this file
+- `Template.md`: template for the weekly report
+- `pull_request_template.md`: pull request's description template
+
+## Report Content
+
+The recommended report structure will have a format as follows:
+
+<details>
+  <summary>Week xx Report, where you record the week as Wxx: from date ~ to date. Example: W1: 01/10/2023~08/10/2023 </summary>
+<br>
+<details>
+<summary>Team Member 1</summary>
+<br>
+
+- Assigned tasks:
+  - Task 1
+  - Task 2
+  - ...
+
+- Implementation details:
+  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+  - Specific implementation details:
+    - Describe specific in detail what you did last week
+    - You can attach images if you want
+
+</details>
+
+<details>
+<summary>Team Member 2</summary>
+<br>
+
+- Assigned tasks:
+  - Task 1
+  - Task 2
+  - ...
+
+- Implementation details:
+  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+  - Specific implementation details:
+    - Describe specific in detail what you did last week
+    - You can attach images if you want
+
+</details>
 
 
 
-# An Internet Media Store
+</details>
 
-<p align="center">
-  <img src="assets/images/aims_cover_image.png" />
-</p>
+---
 
-## Getting Started
+<details>
+  <summary>W2: 01/10/2023~08/10/2023 </summary>
+<br>
+<details>
+<summary>Team Member 1</summary>
+<br>
 
-Welcome to the AIMS project. Here is a guideline to help you get started.
+- Assigned tasks:
+  - Task 1
+  - Task 2
+  - ...
 
-## Folder Structure
+- Implementation details:
+  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+  - Specific implementation details:
+    - Describe specific in detail what you did last week
+    - You can attach images if you want
 
-The workspace contains the following folders, where:
+</details>
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-- `assets`: the folder to maintain static resources
-- `test`: the folder for testing purpose
+<details>
+<summary>Team Member 2</summary>
+<br>
 
-## Dependency Management
+- Assigned tasks:
+  - Task 1
+  - Task 2
+  - ...
 
-### Working with Eclipse
+- Implementation details:
+  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+  - Specific implementation details:
+    - Describe specific in detail what you did last week
+    - You can attach images if you want
 
-Import the root directory of this repository after cloning under `Eclipse` -> `Open Projects from File System...` or by
-using EGit.
+</details>
 
-### SQLite
+</details>
 
-Import `sqlite-jdbc-3.7.2.jar` in `lib`
-under `Eclipse` -> `Project` -> `Properties` -> `Java Build Path` -> `Classpath` -> `Add JARs...`.
+---
 
-### JUnit
+## Pull request template
 
-Import `JUnit5` library
-under `Eclipse` -> `Project` -> `Properties` -> `Java Build Path` -> `Modulepath` -> `Add Library...` -> `JUnit` -> `Next`.
+- You are required to create a pull request according to these steps:
+  - Use the `pull_request_template.md` file when writing the description section in the pull request
+  - The `title` of the pull request should follow the format below:
+    - `Feature/Topic/Hotfix/Fix: Task Name`. Example: `Feature: Build View Controller`
+    - Explain:
+      - `Feature`: When the branch has the task of changing the main code of the project
+      - `Topic`: When the branch only has the task of research, without directly changing the main code of the project
+      - `Hotfix`: When you discover code on the production environment
+      - `Fix`: When you discover a bug in a branch that has not been merged into the production environment
+  - After creating the pull request, decide who will merge the code within your team.
+  - You don't need to follow the Wxx format as I mentioned before
+  - Each person will have multiple pull requests
+  - Whoever makes the pull request, attach that pull request to the report you attached above. Section `pull request(s)`
 
-### JavaFX
+## QA
 
-**Note:** At first, please try to run the project once, and then follow these steps.
-
-1. Create a new `User Library`
-   under `Eclipse` -> `Window` -> `Preferences` -> `Java` -> `Build Path` -> `User Libraries` -> `New`
-2. Name it anything you want, e.g., `JavaFX15`, and include the ***jars*** under either the `lib/linux/javafx-sdk-15`
-   directory for Linux distro or the `lib/win/javafx-sdk-15` directory for Windows in the project.
-3. Include the library, e.g., `JavaFX15`, into the classpath.
-
-### Add VM arguments
-
-Click on `Run` -> `Run Configurations...`  -> `Java Application`, create a new launch configuration for your project and
-add these VM arguments:
-
-- For Linux distro:
-
-> `--module-path lib/linux/javafx-sdk-15/lib --add-modules=javafx.controls,javafx.fxml,javafx.base,javafx.web`
-
-- For Windows:
-
-> `--module-path lib/win/javafx-sdk-15/lib --add-modules=javafx.controls,javafx.fxml,javafx.base,javafx.web`
-
-
+If you have questions, don't hesitate to ask me or start a conversation that everyone can follow.
+## Creators
