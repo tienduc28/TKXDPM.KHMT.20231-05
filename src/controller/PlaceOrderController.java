@@ -3,19 +3,18 @@ package controller;
 import entity.cart.Cart;
 import entity.cart.CartMedia;
 import entity.invoice.Invoice;
-import entity.user.media.Media;
+import entity.media.Media;
 import entity.order.Order;
 import entity.order.OrderMedia;
+import utils.Utils;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.logging.Logger;
 
-/**
- * This class controls the flow of place order usecase in our AIMS project
- */
 public class PlaceOrderController extends BaseController {
 
     /**
@@ -28,8 +27,9 @@ public class PlaceOrderController extends BaseController {
      * button
      *
      * @throws SQLException
-     * data coupling
      */
+    //Coincidental Cohesion
+    //Không xác định coupling
     public void placeOrder() throws SQLException {
         Cart.getCart().checkAvailabilityOfProduct();
     }
@@ -39,8 +39,10 @@ public class PlaceOrderController extends BaseController {
      *
      * @return Order
      * @throws SQLException
-     * data coupling
      */
+
+    //Functional Cohesion
+    //Control Coupling
     public Order createOrder() throws SQLException {
         Order order = new Order();
         for (Object object : Cart.getCart().getListMedia()) {
@@ -59,7 +61,12 @@ public class PlaceOrderController extends BaseController {
      * @param order
      * @return Invoice
      */
+
+    //Functional Cohesion
+    //Control coupling
     public Invoice createInvoice(Order order) {
+
+        order.createOrderEntity();
         return new Invoice(order);
     }
 
@@ -70,10 +77,10 @@ public class PlaceOrderController extends BaseController {
      * @throws InterruptedException
      * @throws IOException
      */
-    // data coupling
+
+    //Coincidental Cohesion
+    //Data Coupling
     public void processDeliveryInfo(HashMap info) throws InterruptedException, IOException {
-        LOGGER.info("Process Delivery Info");
-        LOGGER.info(info.toString());
         validateDeliveryInfo(info);
     }
 
@@ -84,27 +91,27 @@ public class PlaceOrderController extends BaseController {
      * @throws InterruptedException
      * @throws IOException
      */
-    // data coupling
+    //Không xác định cohesion
+    //Không xác dịnh coupling
     public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException {
 
     }
-
 
 
     /**
      * @param phoneNumber
      * @return boolean
      */
-    // control coupling
+
+    //Functional Cohesion
+    //Control Coupling
     public boolean validatePhoneNumber(String phoneNumber) {
-        // check the phoneNumber has 10 digits
         if (phoneNumber.length() != 10)
             return false;
         if (Character.compare(phoneNumber.charAt(0), '0') != 0)
             return false;
-        // check the phoneNumber contains only number
         try {
-            Integer.parseInt(phoneNumber);
+            Long.parseUnsignedLong(phoneNumber);
         } catch (NumberFormatException e) {
             return false;
         }
@@ -117,8 +124,10 @@ public class PlaceOrderController extends BaseController {
      * @param name
      * @return boolean
      */
-    // control coupling
-    public boolean validateName(String name) {
+
+    //Functional Cohesion
+    //Control Coupling
+    public boolean validateContainLetterAndNoEmpty(String name) {
         // Check name is not null
         if (name == null)
             return false;
@@ -133,34 +142,17 @@ public class PlaceOrderController extends BaseController {
 
 
     /**
-     * @param address
-     * @return boolean
-     */
-    // control coupling
-    public boolean validateAddress(String address) {
-        // Check address is not null
-        if (address == null)
-            return false;
-        // Check if contain leter space only
-        if (address.trim().length() == 0)
-            return false;
-        // Check if contain only leter and space
-        if (address.matches("^[a-zA-Z ]*$") == false)
-            return false;
-        return true;
-    }
-
-    /**
      * This method calculates the shipping fees of order
      *
      * @param order
      * @return shippingFee
      */
-    // data coupling
-    public int calculateShippingFee(Order order) {
+
+    //Không xác định cohesion
+    //không xác định coupling
+    public int calculateShippingFee(int amount) {
         Random rand = new Random();
-        int fees = (int) (((rand.nextFloat() * 10) / 100) * order.getAmount());
-        LOGGER.info("Order Amount: " + order.getAmount() + " -- Shipping Fees: " + fees);
+        int fees = (int) (((rand.nextFloat() * 10) / 100) * amount);
         return fees;
     }
 
@@ -171,14 +163,16 @@ public class PlaceOrderController extends BaseController {
      * @return media
      * @throws SQLException
      */
-    // data coupling
+
+    //Functional Cohesion
+    //Control Coupling
     public Media getProductAvailablePlaceRush(Order order) throws SQLException {
         Media media = new Media();
-        HashMap<String, String> deliveryInfo = order.getDeliveryInfo();
-        validateAddressPlaceRushOrder(deliveryInfo.get("province"), deliveryInfo.get("address"));
-        for (Object object : order.getlstOrderMedia()) {
+        for (OrderMedia pd : order.getlstOrderMedia()) {
             // CartMedia cartMedia = (CartMedia) object;
-            validateMediaPlaceRushorder();
+            if( validateMediaPlaceRushorder()){
+                media = pd.getMedia();
+            }
         }
         return media;
     }
@@ -189,9 +183,11 @@ public class PlaceOrderController extends BaseController {
      * @param address
      * @return boolean
      */
-    // control coupling
+
+    //Functional Cohesion
+    //Control Coupling
     public boolean validateAddressPlaceRushOrder(String province, String address) {
-        if (!validateAddress(address))
+        if (!validateContainLetterAndNoEmpty(address))
             return false;
         if (!province.equals("Hà Nội"))
             return false;
@@ -202,7 +198,9 @@ public class PlaceOrderController extends BaseController {
     /**
      * @return boolean
      */
-    // control coupling
+
+    //Functional Cohesion
+    //Control Coupling
     public boolean validateMediaPlaceRushorder() {
         if (Media.getIsSupportedPlaceRushOrder())
             return true;

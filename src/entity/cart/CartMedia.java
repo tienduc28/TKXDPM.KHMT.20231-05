@@ -1,6 +1,6 @@
 package entity.cart;
 
-import entity.user.media.Media;
+import entity.media.Media;
 
 public class CartMedia {
 

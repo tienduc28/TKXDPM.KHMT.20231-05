@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import subsystem.VnPaySubsystem;
+//import subsystem.VnPaySubsystem;
 import utils.Configs;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Logger;
-
+//Khong vi pham nguyen tac SOLID
 public class InvoiceScreenHandler extends BaseScreenHandler {
 
     private static Logger LOGGER = Utils.getLogger(InvoiceScreenHandler.class.getName());
@@ -56,18 +56,22 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 
     private Invoice invoice;
 
+    //Data coupling
+    //Functional Cohesion
     public InvoiceScreenHandler(Stage stage, String screenPath, Invoice invoice) throws IOException {
         super(stage, screenPath);
         this.invoice = invoice;
         setInvoiceInfo();
     }
 
+    //Control Coupling
+    //Functional Cohesion
     private void setInvoiceInfo() {
-        HashMap<String, String> deliveryInfo = invoice.getOrder().getDeliveryInfo();
-        name.setText(deliveryInfo.get("name"));
-        province.setText(deliveryInfo.get("province"));
-        instructions.setText(deliveryInfo.get("instructions"));
-        address.setText(deliveryInfo.get("address"));
+
+        name.setText(invoice.getOrder().getName());
+        province.setText(invoice.getOrder().getProvince());
+        instructions.setText(invoice.getOrder().getInstruction());
+        address.setText(invoice.getOrder().getAddress());
         subtotal.setText(Utils.getCurrencyFormat(invoice.getOrder().getAmount()));
         shippingFees.setText(Utils.getCurrencyFormat(invoice.getOrder().getShippingFees()));
         int amount = invoice.getOrder().getAmount() + invoice.getOrder().getShippingFees();
@@ -88,21 +92,22 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
     }
 
 
+    //Control Coupling
+    ////Functional Cohesion
     /**
      * @param event
      * @throws IOException
      */
     @FXML
     void confirmInvoice(MouseEvent event) throws IOException {
-        var ctrl = new VnPaySubsystem();
-        var url = ctrl.generatePayUrl(invoice.getAmount(), "Thanh toan hoa don");
-        BaseScreenHandler paymentScreen = new PaymentScreenHandler(this.stage, Configs.PAYMENT_SCREEN_PATH, invoice, url);
+
+        BaseScreenHandler paymentScreen = new PaymentScreenHandler(this.stage, Configs.PAYMENT_SCREEN_PATH, invoice);
         paymentScreen.setBController(new PaymentController());
         paymentScreen.setPreviousScreen(this);
         paymentScreen.setHomeScreenHandler(homeScreenHandler);
         paymentScreen.setScreenTitle("Payment Screen");
         paymentScreen.show();
-        LOGGER.info("Confirmed invoice");
+
     }
 
 }

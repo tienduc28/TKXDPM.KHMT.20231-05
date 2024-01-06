@@ -6,8 +6,10 @@ import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 import java.util.logging.Logger;
 
 /**
@@ -54,30 +56,12 @@ public class Utils {
         return dateFormat.format(date);
     }
 
-    /**
-     * Return a {@link java.lang.String String} that represents the cipher text
-     * encrypted by md5 algorithm.
-     *
-     * @param message - plain text as {@link java.lang.String String}.
-     * @return cipher text as {@link java.lang.String String}.
-     * @author hieudm vnpay
-     */
-    public static String md5(String message) {
-        String digest = null;
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] hash = md.digest(message.getBytes("UTF-8"));
-            // converting byte array to Hexadecimal String
-            StringBuilder sb = new StringBuilder(2 * hash.length);
-            for (byte b : hash) {
-                sb.append(String.format("%02x", b & 0xff));
-            }
-            digest = sb.toString();
-        } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
-            Utils.getLogger(Utils.class.getName());
-            digest = "";
-        }
-        return digest;
+    public static String formatDateTime(Date date, String format) {
+        if(date == null) return "";
+        Calendar cld = Calendar.getInstance(TimeZone.getTimeZone("Etc/GMT+7"));
+        SimpleDateFormat formatter = new SimpleDateFormat(format);
+        return formatter.format(date);
+
     }
 
 }

@@ -2,13 +2,15 @@ package controller;
 
 import entity.cart.Cart;
 import entity.cart.CartMedia;
-import entity.user.media.Media;
+import entity.media.Media;
 
 import java.util.List;
 
 
 /**
  * This class is the base controller for our AIMS project.
+ *
+ * @author nguyenlm
  */
 public class BaseController {
 
@@ -19,7 +21,8 @@ public class BaseController {
      * @param media media object
      * @return CartMedia or null
      */
-    //data coupling
+    //Functional Cohesion
+    //Control Coupling
     public CartMedia checkMediaInCart(Media media) {
         return Cart.getCart().checkMediaInCart(media);
     }
@@ -29,7 +32,8 @@ public class BaseController {
      *
      * @return List[CartMedia]
      */
-    //data coupling
+    //Functional Cohesion
+    //Không xác đinh coupling
     public List getListCartMedia() {
         return Cart.getCart().getListMedia();
     }

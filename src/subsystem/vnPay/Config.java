@@ -11,16 +11,19 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 /**
+ *
  * @author CTT VNPAY
  */
 public class Config {
 
     private static final Pattern pattern = Pattern.compile("\\{\"IP\":\"(?<ip>.*)\"\\}");
     public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static String vnp_ReturnUrl = "http://localhost:8080";
-    public static String vnp_TmnCode = "4486M0D5";
-    public static String secretKey = "PEHJSZPTQBJOMZFBXVHCMAZXYSCUYAUY";
-    public static String vnp_ApiUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+    public static String vnp_ReturnUrl = "http://127.0.0.1:50387";
+    public static String vnp_TmnCode = "TXOOZNX4";
+    public static String secretKey = "HUQHTRVXVRGJJWHMBFCAUBAXOSAJBIND";
+    public static String vnp_ApiUrl = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";
+
+
 
     public static String md5(String message) {
         String digest = null;
@@ -103,7 +106,18 @@ public class Config {
     }
 
     public static String getIpAddress() throws IOException {
-        return "1";
+//        URL url = new URL("http://www.realip.info/api/p/realip.php");
+//        try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openConnection().getInputStream()))) {
+//            String content = String.join("\n", in.lines().collect(Collectors.toList()));
+//            Matcher matcher = pattern.matcher(content);
+//            if (matcher.matches()) {
+//                return matcher.group("ip");
+//            } else {
+//                return "No ip found";
+//            }
+//        }
+//        return "127.0.0.1:50387";
+        return "123.123.123.123";
     }
 
     public static String getRandomNumber(int len) {

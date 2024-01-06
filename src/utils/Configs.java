@@ -11,8 +11,8 @@ public class Configs {
 
 
     public static final String PROCESS_TRANSACTION_URL = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static final String vnp_SecureHash = "x";
-    public static final String vnp_TmnCode = "x";
+    public static final String vnp_SecureHash = "HUQHTRVXVRGJJWHMBFCAUBAXOSAJBIND";
+    public static final String vnp_TmnCode = "TXOOZNX4";
 
 
     // database Configs
@@ -30,9 +30,14 @@ public class Configs {
     public static final String SHIPPING_SCREEN_PATH = "/views/fxml/shipping.fxml";
     public static final String CART_MEDIA_PATH = "/views/fxml/media_cart.fxml";
     public static final String HOME_PATH = "/views/fxml/home.fxml";
+    public static final String LOGIN_PATH = "/views/fxml/login.fxml";
+    public static final String SIGNUP_PATH = "/views/fxml/signup.fxml";
     public static final String HOME_MEDIA_PATH = "/views/fxml/media_home.fxml";
     public static final String POPUP_PATH = "/views/fxml/popup.fxml";
     public static final String DELIVERY_METHODS_PATH = "/views/fxml/delivery_methods_form.fxml";
+    public static final String ORDER_PATH = "/views/fxml/order.fxml";
+    public static final String ORDER_MEDIA_PATH = "/views/fxml/media_order.fxml";
+
     public static final int PLACE_RUSH_ORDER = 1;
     public static final int PALCE_ORDER = 2;
     public static String CURRENCY = "VND";

@@ -10,11 +10,13 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import subsystem.vnPay.Config;
 import utils.Configs;
+import utils.Utils;
 import views.screen.BaseScreenHandler;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,17 +28,26 @@ public class PaymentScreenHandler extends BaseScreenHandler {
     @FXML
     private VBox vBox;
 
-    public PaymentScreenHandler(Stage stage, String screenPath, Invoice invoice, String paymentUrl) throws IOException {
+
+    public PaymentScreenHandler(Stage stage, String screenPath, Invoice invoice) throws IOException {
         super(stage, screenPath);
         this.invoice = invoice;
 
+        displayWebView(); // Control Coupling //Control Cohesion
+
+    }
+
+    // Control Coupling // Data Coupling 
+    private void displayWebView() {
+        var paymentController = new PaymentController();
+
+        var paymentUrl = paymentController.getUrlPay(invoice.getAmount(), "Thanh toan hoa don AIMS");
         WebView paymentView = new WebView();
         WebEngine webEngine = paymentView.getEngine();
         webEngine.load(paymentUrl);
         webEngine.locationProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println(oldValue);
             // Xử lý khi URL thay đổi
-            System.out.println(newValue);
+            // Data Coupling // Control Coupling
             handleUrlChanged(newValue);
         });
         vBox.getChildren().clear();
@@ -44,6 +55,7 @@ public class PaymentScreenHandler extends BaseScreenHandler {
     }
 
     // Hàm chuyển đổi query string thành Map
+//Functional Cohesion
     private static Map<String, String> parseQueryString(String query) {
         Map<String, String> params = new HashMap<>();
         if (query != null && !query.isEmpty()) {
@@ -58,8 +70,14 @@ public class PaymentScreenHandler extends BaseScreenHandler {
         return params;
     }
 
+    /**
+     * Xử lý khi URL thay đổi
+     *
+     * @param newValue url vnPay return về
+     */
+// Control Cohesion
     private void handleUrlChanged(String newValue) {
-        if (newValue.startsWith(Config.vnp_ReturnUrl)) {
+        if (newValue.contains(Config.vnp_ReturnUrl)) {
             try {
                 URI uri = new URI(newValue);
                 String query = uri.getQuery();
@@ -67,7 +85,7 @@ public class PaymentScreenHandler extends BaseScreenHandler {
                 // Chuyển đổi query thành Map
                 Map<String, String> params = parseQueryString(query);
 
-                confirmToPayOrder(params);
+                payOrder(params);
 
             } catch (URISyntaxException e) {
                 e.printStackTrace();
@@ -78,11 +96,19 @@ public class PaymentScreenHandler extends BaseScreenHandler {
     }
 
     /**
+     * Thực hiện thanh toán đơn hàng
+     *
+     * @param res kết quả vnPay trả về
      * @throws IOException
      */
-    void confirmToPayOrder(Map<String, String> res) throws IOException {
-        var ctrl = new PaymentController();
-        Map<String, String> response = ctrl.makePayment(res);
+// Control Coupling
+// Control Cohesion
+    void payOrder(Map<String, String> res) throws IOException {
+
+        var ctrl = (PaymentController) super.getBController();
+        Map<String, String> response = ctrl.makePayment(res, this.invoice.getOrder().getId());
+
+        // Tạo và hiển thị màn hình kết quả
         BaseScreenHandler resultScreen = new ResultScreenHandler(this.stage, Configs.RESULT_SCREEN_PATH,
                 response.get("RESULT"), response.get("MESSAGE"));
         ctrl.emptyCart();
