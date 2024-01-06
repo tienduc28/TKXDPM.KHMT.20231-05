@@ -1,16 +1,15 @@
 package views.screen.home;
 
 import common.exception.ViewCartException;
+import controller.AccountController;
 import controller.HomeController;
+import controller.OrderController;
 import controller.ViewCartController;
 import entity.cart.Cart;
-import entity.user.media.Media;
+import entity.media.Media;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitMenuButton;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -21,6 +20,8 @@ import utils.Configs;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.cart.CartScreenHandler;
+import views.screen.login.LoginScreenHandler;
+import views.screen.order.OrderScreenHandler;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,6 +39,12 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
     @FXML
     private Label numMediaInCart;
+
+    @FXML
+    private Button login;
+
+    @FXML
+    private Button orderBtn;
 
     @FXML
     private ImageView aimsImage;
@@ -69,6 +76,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     /**
      * @return Label
      */
+//Functional Cohesion
     public Label getNumMediaCartLabel() {
         return this.numMediaInCart;
     }
@@ -76,12 +84,21 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     /**
      * @return HomeController
      */
+//Functional Cohesion
     public HomeController getBController() {
         return (HomeController) super.getBController();
     }
 
     @Override
+//Sequential Cohesion
     public void show() {
+        try {
+            if (accountController.getLoggedInAccount() != null) {
+                login.setText("Chào mừng, " + accountController.getLoggedInAccount().getName());
+            }
+        } catch(Exception e) {
+            System.out.println("null");
+        }
         numMediaInCart.setText(String.valueOf(Cart.getCart().getListMedia().size()) + " media");
         super.show();
     }
@@ -91,6 +108,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
      * @param arg1
      */
     @Override
+// Control Coupling
+// Control Cohesion
     public void initialize(URL arg0, ResourceBundle arg1) {
         setBController(new HomeController());
         try {
@@ -106,28 +125,53 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
             e.printStackTrace();
         }
 
+        login.setOnMouseClicked(e -> {
+            LoginScreenHandler loginHandler;
+            try {
+                loginHandler = new LoginScreenHandler(stage, Configs.LOGIN_PATH);
+                loginHandler.setHomeScreenHandler(this);
+                loginHandler.setScreenTitle("Login");
+                accountController = loginHandler.getBController();
+                loginHandler.show();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        });
+
         aimsImage.setOnMouseClicked(e -> {
             addMediaHome(this.homeItems);
         });
 
         cartImage.setOnMouseClicked(e -> {
-            CartScreenHandler cartScreen;
+
             try {
-                LOGGER.info("User clicked to view cart");
-                cartScreen = new CartScreenHandler(this.stage, Configs.CART_SCREEN_PATH);
+                var cartScreen = new CartScreenHandler(this.stage, Configs.CART_SCREEN_PATH);
                 cartScreen.setHomeScreenHandler(this);
                 cartScreen.setBController(new ViewCartController());
-                cartScreen.requestToViewCart(this);
+                cartScreen.show(this);
             } catch (IOException | SQLException e1) {
                 throw new ViewCartException(Arrays.toString(e1.getStackTrace()).replaceAll(", ", "\n"));
             }
         });
+
+        orderBtn.setOnMouseClicked(e -> {
+            try {
+                var orderScreen = new OrderScreenHandler(this.stage, Configs.ORDER_PATH);
+                orderScreen.setHomeScreenHandler(this);
+                orderScreen.setBController(new OrderController());
+                orderScreen.show(this);
+            } catch (IOException | SQLException e1) {
+                e1.printStackTrace();
+            }
+        });
+
         addMediaHome(this.homeItems);
         addMenuItem(0, "Book", splitMenuBtnSearch);
         addMenuItem(1, "DVD", splitMenuBtnSearch);
         addMenuItem(2, "CD", splitMenuBtnSearch);
     }
-
+//Data Coupling 
+//Data Cohesion
     public void setImage() {
         // fix image path caused by fxml
         File file1 = new File(Configs.IMAGE_PATH + "/" + "Logo.png");
@@ -142,6 +186,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     /**
      * @param items
      */
+//Data Coupling 
+//Data Cohesion
     public void addMediaHome(List items) {
         ArrayList mediaItems = (ArrayList) ((ArrayList) items).clone();
         hboxMedia.getChildren().forEach(node -> {
@@ -167,6 +213,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
      * @param text
      * @param menuButton
      */
+
+// Data Coupling 
+// Data Cohesion
     private void addMenuItem(int position, String text, MenuButton menuButton) {
         MenuItem menuItem = new MenuItem();
         Label label = new Label();

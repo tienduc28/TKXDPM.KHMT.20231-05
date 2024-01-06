@@ -83,7 +83,7 @@
                 <AnchorPane prefHeight="138.0" prefWidth="344.0">
                     <children>
                         <Button fx:id="btnPlaceOrder" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0"
-                                layoutY="75.0" mnemonicParsing="false" onMouseClicked="#requestToPlaceOrder"
+                                layoutY="75.0" mnemonicParsing="false"
                                 prefHeight="55.0" prefWidth="316.0"
                                 style="-fx-background-color: #5091e6; -fx-cursor: hand;" text="Place order"
                                 textFill="WHITE">

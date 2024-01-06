@@ -1,84 +1,101 @@
 package controller;
 
-import common.exception.PaymentException;
-import common.exception.TransactionNotDoneException;
-import common.exception.UnrecognizedException;
+import common.exception.*;
 import entity.cart.Cart;
+import entity.order.Order;
+import entity.payment.PaymentTransaction;
 import subsystem.VnPayInterface;
-import subsystem.VnPaySubsystem;
+import subsystem.vnPay.VnPaySubsystemController;
+import common.exception.vnPayException.PaymentExceptionHolder;
+import utils.enums.OrderStatus;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.Hashtable;
 import java.util.Map;
 
+/**
+ * This {@code PaymentController} class control the flow of the payment process
+ * in our AIMS Software.
+ *
+ * @author hieud
+ */
 public class PaymentController extends BaseController {
 
-    private VnPayInterface vnPayService;
 
     /**
-     * Validate the input date which should be in the format "mm/yy", and then
-     * return a {@link java.lang.String String} representing the date in the
-     * required format "mmyy" .
-     *
-     * @param date - the {@link java.lang.String String} represents the input date
-     * @return {@link java.lang.String String} - date representation of the required
-     * format
-     * @throws TransactionNotDoneException - if the string does not represent a valid date
-     *                                     in the expected format
+     * Represent the Interbank subsystem
      */
-//  private String getExpirationDate(String date) throws TransactionNotDoneException {
-//    String[] strs = date.split("/");
-//    if (strs.length != 2) {
-//      throw new TransactionNotDoneException();
-//    }
-//
-//    String expirationDate = null;
-//    int month = -1;
-//    int year = -1;
-//
-//    try {
-//      month = Integer.parseInt(strs[0]);
-//      year = Integer.parseInt(strs[1]);
-//      if (month < 1 || month > 12 || year < Calendar.getInstance().get(Calendar.YEAR) % 100 || year > 100) {
-//        throw new TransactionNotDoneException();
-//      }
-//      expirationDate = strs[0] + strs[1];
-//
-//    } catch (Exception ex) {
-//      throw new TransactionNotDoneException();
-//    }
-//
-//    return expirationDate;
-//  }
+    private VnPayInterface vnPayService;
 
-  /**
-   * Pay order, and then return the result with a message.
-   *
-   * @param amount         - the amount to pay
-   * @param contents       - the transaction contents
-
-   * @return {@link java.util.Map Map} represent the payment result with a
-   *         message.
-   */
-  // control coupling
-    public Map<String, String> makePayment(Map<String, String> res) {
+    public PaymentController() {
+        this.vnPayService = new VnPaySubsystemController();
+    }
+    //Control Coupling
+    public Map<String, String> makePayment(Map<String, String> res, int orderId) {
         Map<String, String> result = new Hashtable<String, String>();
-
+        PaymentTransaction trans = null;
         try {
 
+             trans = this.vnPayService.makePaymentTransaction(res);
+            if(trans != null) trans.save(orderId);
+            var order = new Order();
+            if(trans.getErrorCode().equals("00")){
+                result.put("RESULT", "PAYMENT SUCCESSFUL!");
+                result.put("MESSAGE", "You have succesffully paid the order!");
+                order.updateStatus(OrderStatus.Paid, orderId);
+            } else{
+                var ex = PaymentExceptionHolder.getInstance().getException(trans.getErrorCode());
+                if(ex != null){
+                    result.put("MESSAGE", ex.getMessage());
+                    result.put("RESULT", "PAYMENT FAILED!");
+                    order.updateStatus(OrderStatus.Rejected, orderId);
+                }else{
+                    result.put("MESSAGE", "Unknown error, contact to AIMS Team to get helping please.");
+                    result.put("RESULT", "PAYMENT FAILED!");
+                    order.updateStatus(OrderStatus.Rejected, orderId);
+                }
+            }
 
-            this.vnPayService = new VnPaySubsystem();
-            var trans = vnPayService.makePaymentTransaction(res);
 
-            result.put("RESULT", "PAYMENT SUCCESSFUL!");
-            result.put("MESSAGE", "You have succesffully paid the order!");
-        } catch (PaymentException | UnrecognizedException ex) {
-            result.put("MESSAGE", ex.getMessage());
+        } catch ( UnrecognizedException ex) {
+            result.put("MESSAGE", "Fail occur, contact to AIMS Team to get helping please.");
             result.put("RESULT", "PAYMENT FAILED!");
 
         }
+         catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        
         return result;
     }
- // data coupling
+
+    /**
+     * Gen url thanh toán vnPay
+     * @param amount
+     * @param content
+     * @return
+     */
+
+    //Functional Cohesion
+    //Data Coupling
+    public String getUrlPay(int amount, String content){
+
+        String url = null;
+
+
+        try {
+            url = this.vnPayService.generatePayUrl(amount, content);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return url;
+    }
+
+    //Functional Cohesion
+    //Control Coupling
     public void emptyCart() {
         Cart.getCart().emptyCart();
     }

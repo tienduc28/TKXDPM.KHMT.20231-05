@@ -3,7 +3,7 @@ package views.screen.home;
 import common.exception.MediaNotAvailableException;
 import entity.cart.Cart;
 import entity.cart.CartMedia;
-import entity.user.media.Media;
+import entity.media.Media;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -53,7 +53,6 @@ public class MediaHandler extends FXMLScreenHandler {
                 } else {
                     CartMedia cartMedia = new CartMedia(media, cart, spinnerChangeNumber.getValue(), media.getPrice());
                     cart.getListMedia().add(cartMedia);
-                    LOGGER.info("Added " + cartMedia.getQuantity() + " " + media.getTitle() + " to cart");
                 }
 
                 // subtract the quantity and redisplay

@@ -4,13 +4,13 @@ Template for managing Capstone's project in the Software Design and Construction
 ## Table of contents
 
 - [TKXDPM.KHMT.20231-05](#tkxdpmvn20231-01)
-  - [Table of contents](#table-of-contents)
-  - [Quick start](#quick-start)
-  - [What's included](#whats-included)
-  - [Report Content](#report-content)
-  - [Pull request template](#pull-request-template)
-  - [QA](#qa)
-  - [Creators](#creators)
+    - [Table of contents](#table-of-contents)
+    - [Quick start](#quick-start)
+    - [What's included](#whats-included)
+    - [Report Content](#report-content)
+    - [Pull request template](#pull-request-template)
+    - [QA](#qa)
+    - [Creators](#creators)
 
 ## Quick start
 
@@ -44,17 +44,17 @@ The recommended report structure will have a format as follows:
 <br>
 
 - Assigned tasks:
-  - Task: Đánh giá SOLID cho package controller
-  - Task 2
-  - ...
+    - Task: Đánh giá SOLID cho package controller
+    - Task 2
+    - ...
 
 - Implementation details:
-  - Pull Request(s):
-  - Specific implementation details:
-    - Đánh giá package controller:
-    - Tuân thủ một số nguyên tắc trong SOLID, (chủ yếu là SRP)
-    - Có thể cải thiện bằng cách tách nhỏ một số function, do có một số function đang hoạt động quá nhiều chức năng
-    - Một số lớp phụ thuộc quá nhiều vào lớp bên ngoài, cần giảm bớt sự phụ thuộc
+    - Pull Request(s):
+    - Specific implementation details:
+        - Đánh giá package controller:
+        - Tuân thủ một số nguyên tắc trong SOLID, (chủ yếu là SRP)
+        - Có thể cải thiện bằng cách tách nhỏ một số function, do có một số function đang hoạt động quá nhiều chức năng
+        - Một số lớp phụ thuộc quá nhiều vào lớp bên ngoài, cần giảm bớt sự phụ thuộc
 
 </details>
 
@@ -63,15 +63,15 @@ The recommended report structure will have a format as follows:
 <br>
 
 - Assigned tasks:
-  - Task 1
-  - Task 2
-  - ...
+    - Task 1
+    - Task 2
+    - ...
 
 - Implementation details:
-  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
-  - Specific implementation details:
-    - Describe specific in detail what you did last week
-    - You can attach images if you want
+    - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+    - Specific implementation details:
+        - Describe specific in detail what you did last week
+        - You can attach images if you want
 
 </details>
 
@@ -89,15 +89,15 @@ The recommended report structure will have a format as follows:
 <br>
 
 - Assigned tasks:
-  - Task 1
-  - Task 2
-  - ...
+    - Task 1
+    - Task 2
+    - ...
 
 - Implementation details:
-  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
-  - Specific implementation details:
-    - Describe specific in detail what you did last week
-    - You can attach images if you want
+    - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+    - Specific implementation details:
+        - Describe specific in detail what you did last week
+        - You can attach images if you want
 
 </details>
 
@@ -106,15 +106,15 @@ The recommended report structure will have a format as follows:
 <br>
 
 - Assigned tasks:
-  - Task 1
-  - Task 2
-  - ...
+    - Task 1
+    - Task 2
+    - ...
 
 - Implementation details:
-  - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
-  - Specific implementation details:
-    - Describe specific in detail what you did last week
-    - You can attach images if you want
+    - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+    - Specific implementation details:
+        - Describe specific in detail what you did last week
+        - You can attach images if you want
 
 </details>
 
@@ -125,18 +125,18 @@ The recommended report structure will have a format as follows:
 ## Pull request template
 
 - You are required to create a pull request according to these steps:
-  - Use the `pull_request_template.md` file when writing the description section in the pull request
-  - The `title` of the pull request should follow the format below:
-    - `Feature/Topic/Hotfix/Fix: Task Name`. Example: `Feature: Build View Controller`
-    - Explain:
-      - `Feature`: When the branch has the task of changing the main code of the project
-      - `Topic`: When the branch only has the task of research, without directly changing the main code of the project
-      - `Hotfix`: When you discover code on the production environment
-      - `Fix`: When you discover a bug in a branch that has not been merged into the production environment
-  - After creating the pull request, decide who will merge the code within your team.
-  - You don't need to follow the Wxx format as I mentioned before
-  - Each person will have multiple pull requests
-  - Whoever makes the pull request, attach that pull request to the report you attached above. Section `pull request(s)`
+    - Use the `pull_request_template.md` file when writing the description section in the pull request
+    - The `title` of the pull request should follow the format below:
+        - `Feature/Topic/Hotfix/Fix: Task Name`. Example: `Feature: Build View Controller`
+        - Explain:
+            - `Feature`: When the branch has the task of changing the main code of the project
+            - `Topic`: When the branch only has the task of research, without directly changing the main code of the project
+            - `Hotfix`: When you discover code on the production environment
+            - `Fix`: When you discover a bug in a branch that has not been merged into the production environment
+    - After creating the pull request, decide who will merge the code within your team.
+    - You don't need to follow the Wxx format as I mentioned before
+    - Each person will have multiple pull requests
+    - Whoever makes the pull request, attach that pull request to the report you attached above. Section `pull request(s)`
 
 ## QA
 

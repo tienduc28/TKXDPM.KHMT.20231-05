@@ -56,6 +56,7 @@ public class ShippingScreenHandler extends BaseScreenHandler implements Initiali
      * @param arg1
      */
     @Override
+// Data Cohesion
     public void initialize(URL arg0, ResourceBundle arg1) {
         final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
         name.focusedProperty().addListener((observable, oldValue, newValue) -> {
@@ -74,16 +75,35 @@ public class ShippingScreenHandler extends BaseScreenHandler implements Initiali
      * @throws SQLException
      */
     @FXML
+// Control Coupling
+// Control Cohesion
     void submitDeliveryInfo(MouseEvent event) throws IOException, InterruptedException, SQLException {
 
         // add info to messages
-        HashMap messages = new HashMap<>();
-        messages.put("name", name.getText());
+        HashMap messages = new HashMap<>(); 
+        messages.put("name", name.getText()); // Data Coupling 
         messages.put("phone", phone.getText());
         messages.put("address", address.getText());
         messages.put("instructions", instructions.getText());
         messages.put("province", province.getValue());
+        var placeOrderCtrl = getBController();
+        if (!placeOrderCtrl.validateContainLetterAndNoEmpty(name.getText())) {
+            PopupScreen.error("Name is not valid!");
+            return;
+        }
+        if (!placeOrderCtrl.validatePhoneNumber(phone.getText())) {
+            PopupScreen.error("Phone is not valid!");
+            return;
 
+        }
+        if (!placeOrderCtrl.validateContainLetterAndNoEmpty(address.getText())) {
+            PopupScreen.error("Address is not valid!");
+            return;
+        }
+        if (province.getValue() == null) {
+            PopupScreen.error("Province is empty!");
+            return;
+        }
         try {
             // process and validate delivery info
             getBController().processDeliveryInfo(messages);
@@ -92,18 +112,23 @@ public class ShippingScreenHandler extends BaseScreenHandler implements Initiali
         }
 
         // calculate shipping fees
-        int shippingFees = getBController().calculateShippingFee(order);
+        int shippingFees = getBController().calculateShippingFee(order.getAmount());
         order.setShippingFees(shippingFees);
-        order.setDeliveryInfo(messages);
+        order.setName(name.getText());
+        order.setPhone(phone.getText());
+        order.setProvince(province.getValue());
+        order.setAddress(address.getText());
+        order.setInstruction(instructions.getText());
 
-        // // create invoice screen
-        Invoice invoice = getBController().createInvoice(order);
-        BaseScreenHandler InvoiceScreenHandler = new InvoiceScreenHandler(this.stage, Configs.INVOICE_SCREEN_PATH, invoice);
-        InvoiceScreenHandler.setPreviousScreen(this);
-        InvoiceScreenHandler.setHomeScreenHandler(homeScreenHandler);
-        InvoiceScreenHandler.setScreenTitle("Invoice Screen");
-        InvoiceScreenHandler.setBController(getBController());
-        InvoiceScreenHandler.show();
+
+//        // // create invoice screen
+//        Invoice invoice = getBController().createInvoice(order);
+//        BaseScreenHandler InvoiceScreenHandler = new InvoiceScreenHandler(this.stage, Configs.INVOICE_SCREEN_PATH, invoice);
+//        InvoiceScreenHandler.setPreviousScreen(this);
+//        InvoiceScreenHandler.setHomeScreenHandler(homeScreenHandler);
+//        InvoiceScreenHandler.setScreenTitle("Invoice Screen");
+//        InvoiceScreenHandler.setBController(getBController());
+//        InvoiceScreenHandler.show();
 
         //create delivery method screen
         BaseScreenHandler DeliveryMethodsScreenHandler = new DeliveryMethodsScreenHandler(this.stage, Configs.DELIVERY_METHODS_PATH, this.order);
@@ -117,12 +142,10 @@ public class ShippingScreenHandler extends BaseScreenHandler implements Initiali
     /**
      * @return PlaceOrderController
      */
+// Data Cohesion
     public PlaceOrderController getBController() {
         return (PlaceOrderController) super.getBController();
     }
 
-    public void notifyError() {
-        // TODO: implement later on if we need
-    }
 
 }

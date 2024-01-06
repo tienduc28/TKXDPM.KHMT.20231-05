@@ -3,15 +3,22 @@ package controller;
 import entity.cart.Cart;
 
 import java.sql.SQLException;
+
 /**
  * This class controls the flow of events when users view the Cart
+ *
+ * @author nguyenlm
  */
 public class ViewCartController extends BaseController {
+
     /**
      * This method checks the available products in Cart
      *
      * @throws SQLException
      */
+
+    //Functional Cohesion
+    //Control Coupling
     public void checkAvailabilityOfProduct() throws SQLException {
         Cart.getCart().checkAvailabilityOfProduct();
     }
@@ -21,7 +28,9 @@ public class ViewCartController extends BaseController {
      *
      * @return subtotal
      */
-    // data coupling
+
+    //Không xác định cohesion
+    //không xác định coupling
     public int getCartSubtotal() {
         int subtotal = Cart.getCart().calSubtotal();
         return subtotal;

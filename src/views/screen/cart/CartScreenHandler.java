@@ -5,7 +5,6 @@ import common.exception.PlaceOrderException;
 import controller.PlaceOrderController;
 import controller.ViewCartController;
 import entity.cart.CartMedia;
-import entity.order.Order;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,6 +24,9 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
+
+//SRP: Do CartScreenHandler dam nhan nhieu trach nhiem dong thoi xu ly cac thao tac UI.
+//DIP: CartScreenHandler nen phu thuoc vao cac giao dien thay vi cac lop truc tiep.
 
 public class CartScreenHandler extends BaseScreenHandler {
 
@@ -50,6 +52,8 @@ public class CartScreenHandler extends BaseScreenHandler {
     @FXML
     private Button btnPlaceOrder;
 
+    //Control Coupling
+    //Functional Cohesion
     public CartScreenHandler(Stage stage, String screenPath) throws IOException {
         super(stage, screenPath);
 
@@ -65,11 +69,11 @@ public class CartScreenHandler extends BaseScreenHandler {
 
         // on mouse clicked, we start processing place order usecase
         btnPlaceOrder.setOnMouseClicked(e -> {
-            LOGGER.info("Place Order button clicked");
+
             try {
-                requestToPlaceOrder();
+                requestOrder();
             } catch (SQLException | IOException exp) {
-                LOGGER.severe("Cannot place the order, see the logs");
+
                 exp.printStackTrace();
                 throw new PlaceOrderException(Arrays.toString(exp.getStackTrace()).replaceAll(", ", "\n"));
             }
@@ -78,6 +82,8 @@ public class CartScreenHandler extends BaseScreenHandler {
     }
 
 
+    //Khong xac dinh coupling
+    //Functional Cohesion
     /**
      * @return Label
      */
@@ -86,6 +92,8 @@ public class CartScreenHandler extends BaseScreenHandler {
     }
 
 
+    //Khong xac dinh coupling
+    //Functional Cohesion
     /**
      * @return Label
      */
@@ -94,6 +102,8 @@ public class CartScreenHandler extends BaseScreenHandler {
     }
 
 
+    //Khong xac dinh coupling
+    //Sequential Cohesion
     /**
      * @return ViewCartController
      */
@@ -102,11 +112,13 @@ public class CartScreenHandler extends BaseScreenHandler {
     }
 
 
+    //Khong xac dinh coupling
+    //Functional Cohesion
     /**
      * @param prevScreen
      * @throws SQLException
      */
-    public void requestToViewCart(BaseScreenHandler prevScreen) throws SQLException {
+    public void show(BaseScreenHandler prevScreen) throws SQLException {
         setPreviousScreen(prevScreen);
         setScreenTitle("Cart Screen");
         getBController().checkAvailabilityOfProduct();
@@ -115,14 +127,16 @@ public class CartScreenHandler extends BaseScreenHandler {
     }
 
 
+    //Control coupling
+    //Procedural Cohesion
     /**
      * @throws SQLException
      * @throws IOException
      */
-    public void requestToPlaceOrder() throws SQLException, IOException {
+    public void requestOrder() throws SQLException, IOException {
         try {
             // create placeOrderController and process the order
-            PlaceOrderController placeOrderController = new PlaceOrderController();
+            var placeOrderController = new PlaceOrderController();
             if (placeOrderController.getListCartMedia().size() == 0) {
                 PopupScreen.error("You don't have anything to place");
                 return;
@@ -134,7 +148,7 @@ public class CartScreenHandler extends BaseScreenHandler {
             displayCartWithMediaAvailability();
 
             // create order
-            Order order = placeOrderController.createOrder();
+            var order = placeOrderController.createOrder();
 
             // display shipping form
             ShippingScreenHandler ShippingScreenHandler = new ShippingScreenHandler(this.stage, Configs.SHIPPING_SCREEN_PATH, order);
@@ -150,7 +164,7 @@ public class CartScreenHandler extends BaseScreenHandler {
         }
     }
 
-
+    //Khong xac dinh coupling
     /**
      * @throws SQLException
      */
@@ -159,19 +173,22 @@ public class CartScreenHandler extends BaseScreenHandler {
         displayCartWithMediaAvailability();
     }
 
+    //Khong xac dinh coupling
+    //Functional Cohesion
     void updateCartAmount() {
         // calculate subtotal and amount
         int subtotal = getBController().getCartSubtotal();
         int vat = (int) ((Configs.PERCENT_VAT / 100) * subtotal);
         int amount = subtotal + vat;
-        LOGGER.info("amount" + amount);
+
 
         // update subtotal and amount of Cart
         labelSubtotal.setText(Utils.getCurrencyFormat(subtotal));
         labelVAT.setText(Utils.getCurrencyFormat(vat));
         labelAmount.setText(Utils.getCurrencyFormat(amount));
     }
-
+    //Control Coupling
+    //Functional Cohesion
     private void displayCartWithMediaAvailability() {
         // clear all old cartMedia
         vboxCart.getChildren().clear();

@@ -4,6 +4,7 @@ import controller.PlaceOrderController;
 import controller.PlaceRushOrderController;
 import entity.invoice.Invoice;
 import entity.order.Order;
+import entity.shipping.Shipment;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -59,20 +60,19 @@ public class DeliveryMethodsScreenHandler extends BaseScreenHandler {
         if (deliveryTime.getValue() != null) {
             deliveryDateString = new String(deliveryTime.getValue().toString());
         }
-
-        HashMap<String, String> deliveryData = new HashMap<String, String>();
-        deliveryData.put("deliveryInstruction", deliveryInstructionString);
-        deliveryData.put("shipmentDetail", shipmentDetailString);
-        deliveryData.put("deliveryDate", deliveryDateString);
-
         int typeDelivery;
         if (placeRushOrderValue.isSelected()) {
             typeDelivery = utils.Configs.PLACE_RUSH_ORDER;
         } else {
             typeDelivery = utils.Configs.PALCE_ORDER;
         }
+        var shipment = new Shipment(typeDelivery);
+        shipment.setShipmentDetail(shipmentDetailString);
+        shipment.setDeliveryTime(deliveryDateString);
+        shipment.setDeliveryInstruction(deliveryInstructionString);
 
-        PlaceRushOrderController.validatePlaceRushOrderData(deliveryData, typeDelivery);
+        PlaceRushOrderController.validatePlaceRushOrderData(shipment);
+        order.setShipment(shipment);
 
         // // create invoice screen
         Invoice invoice = getBController().createInvoice(order);
@@ -125,8 +125,7 @@ public class DeliveryMethodsScreenHandler extends BaseScreenHandler {
      */
     @FXML
     private void handleProvinceError(ActionEvent event) {
-        HashMap<String, String> deliveryInfo = this.order.getDeliveryInfo();
-        String province = new String(deliveryInfo.get("province"));
+        String province = new String(order.getProvince());
 
         errorProvince.setVisible(false);
         deliveryInstruction.setDisable(true);
