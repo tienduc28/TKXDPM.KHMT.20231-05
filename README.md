@@ -70,8 +70,7 @@ The recommended report structure will have a format as follows:
 - Implementation details:
     - Pull Request(s): [https://github.com/tienduc28/TKXDPM.KHMT.20231-05/commit/76028ab844f8d6373263f67e60feac88fc0f39ac]()
     - Specific implementation details:
-        - Describe specific in detail what you did last week
-        - You can attach images if you want
+        - Feature: Build Sign Up and Login, fix base code
 
 </details>
 
@@ -115,6 +114,35 @@ The recommended report structure will have a format as follows:
     - Specific implementation details:
         - Describe specific in detail what you did last week
         - You can attach images if you want
+
+</details>
+
+</details>
+
+---
+
+<details>
+  <summary>Wxx: 01/01/2024~06/1/2024 </summary>
+<br>
+
+<details>
+<summary>Vũ Thị Bích Diệp</summary>
+<br>
+
+- Assigned tasks:
+    - Task 1
+    - Task 2
+    - ...
+
+- Implementation details:
+    - Pull Request(s): [https://github.com/tienduc28/TKXDPM.KHMT.20231-05/commit/76028ab844f8d6373263f67e60feac88fc0f39ac]()
+    - Specific implementation details:
+        - Feature: Build Sign Up and Login, fix base code
+
+    - Pull Request(s): []()
+    - Specific implementation details:
+        - Feature: Upload document of Sign Up and Login features
+    
 
 </details>
 
