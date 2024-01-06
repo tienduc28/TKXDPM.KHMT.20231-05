@@ -59,7 +59,7 @@ The recommended report structure will have a format as follows:
 </details>
 
 <details>
-<summary>Vũ Thị Bích Diệp</summary>
+<summary>Team Member 2</summary>
 <br>
 
 - Assigned tasks:
@@ -68,7 +68,7 @@ The recommended report structure will have a format as follows:
     - ...
 
 - Implementation details:
-    - Pull Request(s): [https://github.com/tienduc28/TKXDPM.KHMT.20231-05/commit/76028ab844f8d6373263f67e60feac88fc0f39ac]()
+    - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
     - Specific implementation details:
         - Describe specific in detail what you did last week
         - You can attach images if you want
