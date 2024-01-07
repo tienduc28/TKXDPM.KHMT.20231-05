@@ -92,8 +92,8 @@ public class User {
     /**
      * @param phone
      */
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phone = phoneNumber;
     }
 
 }

@@ -68,9 +68,9 @@ The recommended report structure will have a format as follows:
     - ...
 
 - Implementation details:
-    - Pull Request(s): [https://github.com/tienduc28/TKXDPM.KHMT.20231-05/commit/76028ab844f8d6373263f67e60feac88fc0f39ac]()
+    - Pull Request(s): 
     - Specific implementation details:
-        - Feature: Build Sign Up and Login, fix base code
+        - 
 
 </details>
 
@@ -139,9 +139,10 @@ The recommended report structure will have a format as follows:
     - Specific implementation details:
         - Feature: Build Sign Up and Login, fix base code
 
-    - Pull Request(s): []()
+    - Pull Request(s): [https://github.com/tienduc28/TKXDPM.KHMT.20231-05/commit/6d424502c12a01f67f2192932eff004a3e5899c3]()
     - Specific implementation details:
         - Feature: Upload document of Sign Up and Login features
+        - Hotfix: Upload demo video and Testing summary
     
 
 </details>

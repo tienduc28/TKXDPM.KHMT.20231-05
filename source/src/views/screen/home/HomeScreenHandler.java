@@ -94,7 +94,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     public void show() {
         try {
             if (accountController.getLoggedInAccount() != null) {
-                login.setText("Chào mừng, " + accountController.getLoggedInAccount().getName());
+                login.setText("Sign out");
             }
         } catch(Exception e) {
             System.out.println("null");

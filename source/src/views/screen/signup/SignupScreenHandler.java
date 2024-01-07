@@ -78,7 +78,7 @@ public class SignupScreenHandler extends BaseScreenHandler  implements Initializ
                 if (birthdate.getValue() == null) {
                     PopupScreen.error("Vui lòng điền đầy đủ các trường");
                 } else {
-                    requestSignup(username.getText(), password.getText(), confirmPassword.getText(), name.getText(), birthdate.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), phoneNumber.getText());
+                    requestToSignup(username.getText(), password.getText(), confirmPassword.getText(), name.getText(), birthdate.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), phoneNumber.getText());
                 }
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -91,7 +91,7 @@ public class SignupScreenHandler extends BaseScreenHandler  implements Initializ
         return accountController;
     }
 
-    public void requestSignup(String username, String password, String confirmPassword, String name, String birthDate, String phoneNumber) throws SQLException, IOException {
+    public void requestToSignup(String username, String password, String confirmPassword, String name, String birthDate, String phoneNumber) throws SQLException, IOException {
         try {
             getBController().signup(name, username, password, confirmPassword,  birthDate, phoneNumber);
             PopupScreen.success("Tạo tài khoản thành công");

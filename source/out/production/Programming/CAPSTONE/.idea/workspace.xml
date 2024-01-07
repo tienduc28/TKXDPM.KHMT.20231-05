@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="371bf940-523a-435a-a3aa-f986b7884981" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/App.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/common/exception/LoginFailedException.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/entity/user/Account.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/views/fxml/home.fxml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/views/fxml/login.fxml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/views/fxml/media_home.fxml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/views/fxml/popup.fxml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/views/screen/home/HomeScreenHandler.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/views/screen/home/MediaHandler.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/views/screen/login/LoginScreenHandler.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2aVsyNnzrR6RgDCyf1IO3JTAZW1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "jdk.selected.JAVA_MODULE": "jdk-18",
+    "last_opened_file_path": "D:/Capstone/SMIACAP-master/SMIACAP-master/lib/lib/javafx.web.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Capstone" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="App" />
+      <module name="Programming" />
+      <option name="VM_PARAMETERS" value="--module-path lib/javafx-sdk-21.0.1/lib --add-modules javafx.controls,javafx.base,javafx.fxml,javafx.graphics,javafx.web" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="371bf940-523a-435a-a3aa-f986b7884981" name="Changes" comment="" />
+      <created>1704415334219</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1704415334219</updated>
+    </task>
+    <servers />
+  </component>
+</project>

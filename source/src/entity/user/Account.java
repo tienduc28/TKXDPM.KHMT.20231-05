@@ -92,12 +92,12 @@ public class Account {
     /**
      * @param phone
      */
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phone = phoneNumber;
     }
 
     public Account login() throws SQLException {
-        if (validateLoginInformation()) {
+        if (validateLoginInfo()) {
             Account tmp = getAccountByUsername(username);
             if (tmp.password.compareTo(this.password) == 0) {
                 System.out.println(tmp.getName());
@@ -107,16 +107,16 @@ public class Account {
                 throw new LoginFailedException("Sai mật khẩu");
             }
         } else {
-            throw new LoginFailedException("Sai format tài khoản/mật khẩu");
+            throw new LoginFailedException("Sai định dạng tài khoản/mật khẩu");
         }
     }
 
-    public boolean validateLoginInformation() {
+    public boolean validateLoginInfo() {
         Matcher matcher = pattern.matcher(password);
         if (matcher.matches()) {
             return true;
         } else {
-            throw new LoginFailedException("Sai format mật khẩu");
+            throw new LoginFailedException("Sai định dạng mật khẩu");
         }
     }
 
@@ -130,9 +130,9 @@ public class Account {
             message = null;
         }
         if (!matcher.matches()) 
-            message = "Sai format mật khẩu";
+            message = "Sai định dạng mật khẩu";
         if (username.length() < 8 || username.length() > 20) 
-            message = "Tài khoản phải có độ dài từ 8-20 kí tự";
+            message = "Tên người dùng phải có độ dài từ 8-20 kí tự";
         if (name.length() > 30) 
             message = "Tên không được vượt quá 30 kí tự";
         if (phone.length() < 10 || phone.length() > 13)

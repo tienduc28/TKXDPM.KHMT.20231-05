@@ -85,7 +85,7 @@ public class OrderMediaHandler extends FXMLScreenHandler {
         Resource resource = new Resource();
         name.setText("Name: " + this.order.getName());
         addess.setText("Address: " + this.order.getAddress());
-        phone.setText("Phone: " + this.order.getPhone());
+        phone.setText("Phone: " + this.order.getPhoneNumber());
         price.setText("Price: " + Utils.getCurrencyFormat(this.order.getPaymentTransaction().getAmount() / 1000));
         shippingFees.setText("Shipping fees: " + Utils.getCurrencyFormat(this.order.getShippingFees() ));
 

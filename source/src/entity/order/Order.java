@@ -83,11 +83,11 @@ public class Order {
         this.address = address;
     }
 
-    public String getPhone() {
+    public String getPhoneNumber() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhoneNumber(String phone) {
         this.phone = phone;
     }
 
@@ -133,7 +133,7 @@ public class Order {
                     order.setName(resultSet.getString("name"));
                     order.setProvince(resultSet.getString("province"));
                     order.setAddress(resultSet.getString("address"));
-                    order.setPhone(resultSet.getString("phone"));
+                    order.setPhoneNumber(resultSet.getString("phone"));
                     order.setShippingFees(resultSet.getInt("shippingFees"));
                     order.setStatus(OrderStatus.values()[resultSet.getInt("status")]);
 

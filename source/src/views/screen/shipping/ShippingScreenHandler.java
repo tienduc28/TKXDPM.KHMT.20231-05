@@ -115,7 +115,7 @@ public class ShippingScreenHandler extends BaseScreenHandler implements Initiali
         int shippingFees = getBController().calculateShippingFee(order.getAmount());
         order.setShippingFees(shippingFees);
         order.setName(name.getText());
-        order.setPhone(phone.getText());
+        order.setPhoneNumber(phone.getText());
         order.setProvince(province.getValue());
         order.setAddress(address.getText());
         order.setInstruction(instructions.getText());
