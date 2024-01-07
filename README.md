@@ -81,22 +81,20 @@ The recommended report structure will have a format as follows:
 ---
 
 <details>
-  <summary>W2: 01/10/2023~08/10/2023 </summary>
+  <summary>Final Report: 6/1/2024 </summary>
 <br>
 <details>
-<summary>Team Member 1</summary>
+<summary>Trần Quang Đông</summary>
 <br>
 
 - Assigned tasks:
-    - Task 1
-    - Task 2
-    - ...
+    - Task phân tích thiết kế thêm xóa giỏ hàng
 
 - Implementation details:
-    - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+    - Pull Request(s):
     - Specific implementation details:
-        - Describe specific in detail what you did last week
-        - You can attach images if you want
+        - Thiết kế UseCase thêm vào giỏ hàng, xóa giỏ hàng
+        - Sequence Diagram, Activity Diagram, Class Diagram
 
 </details>
 
